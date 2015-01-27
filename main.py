@@ -12,18 +12,20 @@ def log(text):
 	logfile.write(datetime.datetime.now().isoformat() + ": " + text))
 
 def connect():
-	api = twitter.Api(
+	return twitter.Api(
 		consume_key = CONSUMER_KEY,
 		consumer_secret = CONSUMER_SECRET,
 		access_token_key = ACCESS_TOKEN_KEY,
 		access_token_secret = ACCESS_TOKEN_SECRET
 	)
-	return api
 
 
 if __name__ == "__main__":
 
 	log("starting minerva")
+
+	api = connect()
+	log("connected to Twitter API")
 
 	lastChange = 0
 
@@ -36,7 +38,7 @@ if __name__ == "__main__":
 			
 			commandsToExecute = []
 			for dm in dms:
-				if COMMAND_SOURCE_ACCOUNTS.__len__() == 0:
+				if len(COMMAND_SOURCE_ACCOUNTS) == 0:
 					commandsToExecute.append([
 						dm.GetSenderScreenName(), 
 						dm.GetText()
@@ -51,10 +53,10 @@ if __name__ == "__main__":
 						else
 							log("unprivileged user @" + dm.GetSenderScreenName() + " tried to execute command (dm) \"" + dm.GetText().replace("\n", "\\n") + "\"\n")
 
-			if ! ALLOW_ONLY_DM_COMMANDS:
+			if not ALLOW_ONLY_DM_COMMANDS:
 				mentions = api.GetMentions(since_id = lastChange)
 				for mention in mentions:
-				if COMMAND_SOURCE_ACCOUNTS.__len__() == 0:
+				if len(COMMAND_SOURCE_ACCOUNTS) == 0:
 					commandsToExecute.append([
 						mention.GetUser().GetScreenName(), 
 						mention.GetText()
@@ -81,8 +83,8 @@ if __name__ == "__main__":
 	
 
 		for command in UPDATE_COMMANDS:
-			output = subprocess.Popen(command[1], shell=True, stdout=PIPE).stdout.read()
-			api.PostUpdate(status = (command[0] + COMMAND_NAME_SEPERATOR + output))
+			output = subprocess.Popen(UPDATE_COMMANDS[command], shell=True, stdout=PIPE).stdout.read()
+			api.PostUpdate(status = (command + COMMAND_NAME_SEPERATOR + output))
 
 	
 		time.sleep(5 * 60) 
