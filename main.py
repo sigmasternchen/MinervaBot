@@ -81,8 +81,8 @@ if __name__ == "__main__":
 	
 
 		for command in UPDATE_COMMANDS:
-			output = subprocess.Popen(command[1], shell=True, stdout=PIPE).stdout.read()
-			api.PostUpdate(status = (command[0] + COMMAND_NAME_SEPERATOR + output))
+			output = subprocess.Popen(UPDATE_COMMANDS[command], shell=True, stdout=PIPE).stdout.read()
+			api.PostUpdate(status = (command + COMMAND_NAME_SEPERATOR + output))
 
 	
 		time.sleep(5 * 60) 

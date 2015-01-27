@@ -21,9 +21,9 @@ LOG_FILE = "~/minerva.log"
 
 COMMAND_NAME_SEPERATOR = "\n"
 
-UPDATE_COMMANDS = [
-	["uptime:", "uptime"],
-	["mdstat:", 'cat /proc/mdstat | grep block | sed "s/  / /" | sed "s/  / /" | sed "s/  / /" | sed "s/  / /" | sed "s/  / /"'],
-	["lxc:", 'lxc-ls -f -F name,state | grep -v "NAME" | grep -v \- | sed "s/  / /" | sed "s/  / /" | sed "s/  / /" | sed "s/  / /" | sed "s/  / /" | sed "s/  / /" | sed "s/  / /" | sed "s/ /: /" | sed "s/RUNNING/UP/" | sed "s/STOPPED/DOWN/"'],
-	["df:", 'df -h --output=source,size,used | grep /dev/ | grep -v tmpfs | sed "s/  / /" | sed "s/  / /" | sed "s/  / /" | sed "s/  / /" | sed "s/  / /" | sed "s/  / /" | sed "s/  / /" | sed "s/  / /" | sed "s/  / /"']
-]
+UPDATE_COMMANDS = {
+	"uptime:": "uptime",
+	"mdstat:": 'cat /proc/mdstat | grep block | sed "s/  / /" | sed "s/  / /" | sed "s/  / /" | sed "s/  / /" | sed "s/  / /"',
+	"lxc:": 'lxc-ls -f -F name,state | grep -v "NAME" | grep -v \- | sed "s/  / /" | sed "s/  / /" | sed "s/  / /" | sed "s/  / /" | sed "s/  / /" | sed "s/  / /" | sed "s/  / /" | sed "s/ /: /" | sed "s/RUNNING/UP/" | sed "s/STOPPED/DOWN/"',
+	"df:": 'df -h --output=source,size,used | grep /dev/ | grep -v tmpfs | sed "s/  / /" | sed "s/  / /" | sed "s/  / /" | sed "s/  / /" | sed "s/  / /" | sed "s/  / /" | sed "s/  / /" | sed "s/  / /" | sed "s/  / /"'
+}
