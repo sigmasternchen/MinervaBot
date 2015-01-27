@@ -36,7 +36,7 @@ if __name__ == "__main__":
 			
 			commandsToExecute = []
 			for dm in dms:
-				if COMMAND_SOURCE_ACCOUNTS.__len__() == 0:
+				if len(COMMAND_SOURCE_ACCOUNTS) == 0:
 					commandsToExecute.append([
 						dm.GetSenderScreenName(), 
 						dm.GetText()
@@ -54,7 +54,7 @@ if __name__ == "__main__":
 			if not ALLOW_ONLY_DM_COMMANDS:
 				mentions = api.GetMentions(since_id = lastChange)
 				for mention in mentions:
-				if COMMAND_SOURCE_ACCOUNTS.__len__() == 0:
+				if len(COMMAND_SOURCE_ACCOUNTS) == 0:
 					commandsToExecute.append([
 						mention.GetUser().GetScreenName(), 
 						mention.GetText()
