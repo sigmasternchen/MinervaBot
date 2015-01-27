@@ -27,6 +27,8 @@ if __name__ == "__main__":
 	api = connect()
 	log("connected to Twitter API")
 
+	counter = 0
+
 	lastChange = 0
 
 	lastChange = api.getDirectMessages(since_id = lastChange)[0].GetId()
@@ -84,8 +86,23 @@ if __name__ == "__main__":
 
 		for command in UPDATE_COMMANDS:
 			output = subprocess.Popen(UPDATE_COMMANDS[command], shell=True, stdout=PIPE).stdout.read()
-			api.PostUpdate(status = (command + COMMAND_NAME_SEPERATOR + output))
+			if len(DESTINATION_ACCOUNTS):
+				for username in DESTINATION_ACCOUNTS:
+					api.PostUpdate(status = (username + " " + command + COMMAND_NAME_SEPERATOR + output))
+			else:
+				api.PostUpdate(status = (command + COMMAND_NAME_SEPERATOR + output))
 
 	
-		time.sleep(5 * 60) 
+		if counter % 3 == 0:
+			for command in WARNING_COMMANDS:
+				output = subprocess.Popen(WARNING_COMMANDS[command][0], shell=True, stdout=PIPE).stdout.read()
+				if output != WARNING_COMMANDS[command][1]:
+					if len(WARNING_DESTINATION_ACCOUNTS):
+						for username in WARNING_DESTINATION_ACCOUNTS:
+							api.PostUpdate(status = username + " WARNING: " + command + COMMAND_NAME_SEPERATOR + WARNING_COMMANDS[command][2])
+					else:
+						api.PostUpdate(status = "WARNING: " + command + COMMAND_NAME_SEPERATOR + WARNING_COMMANDS[command][2])
+		time.sleep(5 * 60)
+
+		counter++
 
