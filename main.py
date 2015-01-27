@@ -43,33 +43,33 @@ if __name__ == "__main__":
 						dm.GetSenderScreenName(), 
 						dm.GetText()
 					])
-				else
+				else:
 					for user in COMMAND_SOURCE_ACCOUNTS:
 						if dm.GetSenderScreenName() == user:
 							commandsToExecute.append([
 								dm.GetSenderScreenName(), 
 								dm.GetText()
 							])
-						else
+						else:
 							log("unprivileged user @" + dm.GetSenderScreenName() + " tried to execute command (dm) \"" + dm.GetText().replace("\n", "\\n") + "\"\n")
 
 			if not ALLOW_ONLY_DM_COMMANDS:
 				mentions = api.GetMentions(since_id = lastChange)
 				for mention in mentions:
-				if len(COMMAND_SOURCE_ACCOUNTS) == 0:
-					commandsToExecute.append([
-						mention.GetUser().GetScreenName(), 
-						mention.GetText()
-					])
-				else
-					for user in COMMAND_SOURCE_ACCOUNTS:
-						if mention.GetUser().GetScreenName() == user:
-							commandsToExecute.append([
-								mention.GetUser().GetScreenName(),
-								mention.GetText()
-							])
-						else
-							log("unprivileged user @" + mention.GetUser().GetScreenName() + " tried to execute command \"" + mention.GetText().replace("\n", "\\n") + "\"\n")
+					if len(COMMAND_SOURCE_ACCOUNTS) == 0:
+						commandsToExecute.append([
+							mention.GetUser().GetScreenName(), 
+							mention.GetText()
+						])
+					else:
+						for user in COMMAND_SOURCE_ACCOUNTS:
+							if mention.GetUser().GetScreenName() == user:
+								commandsToExecute.append([
+									mention.GetUser().GetScreenName(),
+									mention.GetText()
+								])
+							else:
+								log("unprivileged user @" + mention.GetUser().GetScreenName() + " tried to execute command \"" + mention.GetText().replace("\n", "\\n") + "\"\n")
 
 		
 			for command in commandsToExecute:
@@ -78,7 +78,7 @@ if __name__ == "__main__":
 				log("result: " + output);
 				if (output + command[0]).len() + 2 > 140:
 					api.PostUpdate(status = command[0] + "Output of command is too long. I'm sry. : /")
-				else
+				else:
 					api.PostUpdate(status = command[0] + " " + output)
 	
 
