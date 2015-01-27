@@ -12,18 +12,20 @@ def log(text):
 	logfile.write(datetime.datetime.now().isoformat() + ": " + text))
 
 def connect():
-	api = twitter.Api(
+	return twitter.Api(
 		consume_key = CONSUMER_KEY,
 		consumer_secret = CONSUMER_SECRET,
 		access_token_key = ACCESS_TOKEN_KEY,
 		access_token_secret = ACCESS_TOKEN_SECRET
 	)
-	return api
 
 
 if __name__ == "__main__":
 
 	log("starting minerva")
+
+	api = connect()
+	log("connected to Twitter API")
 
 	lastChange = 0
 
