@@ -51,7 +51,7 @@ if __name__ == "__main__":
 						else
 							log("unprivileged user @" + dm.GetSenderScreenName() + " tried to execute command (dm) \"" + dm.GetText().replace("\n", "\\n") + "\"\n")
 
-			if ! ALLOW_ONLY_DM_COMMANDS:
+			if not ALLOW_ONLY_DM_COMMANDS:
 				mentions = api.GetMentions(since_id = lastChange)
 				for mention in mentions:
 				if COMMAND_SOURCE_ACCOUNTS.__len__() == 0:
