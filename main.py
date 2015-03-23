@@ -62,12 +62,12 @@ if __name__ == "__main__":
 	lastChange = 0
 
 	lastChange = api.direct_messages(since_id = lastChange)
-	if lastChange.length == 0
+	if lastChange.length == 0:
 		lastChange = 0
-	else 
+	else: 
 		lastChange = lastChange[0].GetId()
 	lastChange = api.mentions_timeline(since_id = lastChange)
-	if lastChange.length != 0
+	if lastChange.length != 0:
 		lastChange = lastChange[0].GetId()
 
 	while true:
