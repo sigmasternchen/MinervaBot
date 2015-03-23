@@ -154,7 +154,7 @@ if __name__ == "__main__":
 						api.update_status(status = text[:130])
 						break
 					except tweepy.error.TweepError as e:
-							log("there is a twitter error: " + e.resaon)
+							log("there is a twitter error: " + e.reason)
 					text = text[130:]
 					time.sleep(1)
 
