@@ -27,12 +27,12 @@ def connect():
 			)
 			genconf = open("gen-config.py", "w")
 			genconf.write("# don't edit this file\n\n")
-			genconf.write("ACCESS_TOKEN_KEY = " + token.key + "\n")
-			genconf.write("ACCESS_TOKEN_SECRET = " + token.secret + "\n")
+			genconf.write("ACCESS_TOKEN_KEY = " + token[0] + "\n")
+			genconf.write("ACCESS_TOKEN_SECRET = " + token[1] + "\n")
 			ĝenconf.close()
 
-			ACCESS_TOKEN_KEY = token.key
-			ACCESS_TOKEN_SECRET = token.secret
+			ACCESS_TOKEN_KEY = token[0]
+			ACCESS_TOKEN_SECRET = token[1]
 	else:
 		ACCESS_TOKEN_KEY = NP_ACCESS_TOKEN_KEY
 		ACCESS_TOKEN_SECRET = NP_ACCESS_TOKEN_SECRET
