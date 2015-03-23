@@ -71,10 +71,10 @@ if __name__ == "__main__":
 	if len(lastChangeDM) == 0:
 		lastChangeDM = 0
 	else: 
-		lastChangeDM = lastChangeDM[0].GetId()
+		lastChangeDM = lastChangeDM[0].id
 	lastChangeT = api.mentions_timeline()
 	if len(lastChangeT) != 0:
-		lastChangeT = lastChangeT[0].GetId()
+		lastChangeT = lastChangeT[0].id
 	else:
 		lastChangeT = 0
 
