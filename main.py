@@ -133,7 +133,7 @@ if __name__ == "__main__":
 			if len(DESTINATION_ACCOUNTS):
 				for username in DESTINATION_ACCOUNTS:
 					text = (username + " " + command + COMMAND_NAME_SEPERATOR + output)
-					while len(text) != 0
+					while len(text) != 0:
 						api.update_status(status = text[:140])
 						text = text[140:]
 
