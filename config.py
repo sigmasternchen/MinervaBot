@@ -20,7 +20,7 @@ COMMAND_SOURCE_ACCOUNTS = []
 
 # use "w" for overwrite, or "a" for append
 LOG_TYPE = "a"
-LOG_FILE = "~/minerva.log"
+LOG_FILE = "/var/minerva.log"
 
 COMMAND_NAME_SEPERATOR = "\n"
 
