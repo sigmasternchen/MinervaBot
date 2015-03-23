@@ -29,7 +29,7 @@ UPDATE_COMMANDS = {
 	#"mdstat:": 'cat /proc/mdstat | grep block | sed "s/\s\+/ /g"',
 	#"lxc:": 'lxc-ls -f -F name,state | grep -v "NAME" | grep -v "\-" | sed "s/\s\+/ /g" | sed "s/ /: /"| sed "s/RUNNING/UP/" | sed "s/STOPPED/DOWN/"',
 	"df:": "df -h --output=source,size,used | grep /dev/ | sed 's/\s\+/ /g'",
-	"ping:" 'ping -c1 8.8.8.8 | grep from | awk -F"time=" \'{ print $2 }\''
+	"ping:": 'ping -c1 8.8.8.8 | grep from | awk -F"time=" \'{ print $2 }\''
 }
 
 WARNING_COMMANDS = {
