@@ -127,7 +127,7 @@ if __name__ == "__main__":
 				log("executing command (@" + command[0] + ") \"" + command[1].replace("\n", "\\n") + "\"")
 				output = Popen(command[1], shell=True, stdout=PIPE, stderr=STDOUT).stdout.read().decode("utf-8")
 				log("result: " + output);
-				if (output + command[0]).len() + 2 > 140:
+				if len(output + command[0]) + 2 > 140:
 					api.update_status(status = (command[0] + "Output of command is too long. I'm sry. : /"))
 				else:
 					api.update_status(status = (command[0] + " " + output))
