@@ -1,8 +1,9 @@
 import tweepy
 import sys
-import subprocess
 import datetime
 import time
+
+from subprocess import Popen, PIPE, STDOUT
 
 ACCESS_TOKEN_KEY = "holder"
 
@@ -13,7 +14,7 @@ logfile = open(LOG_FILE, LOG_TYPE)
 
 def log(text):
 	logfile.write(datetime.datetime.now().isoformat() + ": " + text + "\n")
-	print(datetime.datetime.now().isoformat() + ": " + text + "\n")
+	print(datetime.datetime.now().isoformat() + ": " + text)
 
 def connect():
 	global ACCESS_TOKEN_KEY
@@ -119,7 +120,7 @@ if __name__ == "__main__":
 		
 			for command in commandsToExecute:
 				log("executing command (@" + command[0] + ") \"" + command[1].replace("\n", "\\n") + "\"")
-				output = subprocess.Popen(command[1], shell=True, stdout=PIPE).stdout.read()
+				output = Popen(command[1], shell=True, stdout=PIPE, stderr=STDOUT).stdout.read()
 				log("result: " + output);
 				if (output + command[0]).len() + 2 > 140:
 					api.update_status(status = command[0] + "Output of command is too long. I'm sry. : /")
@@ -128,7 +129,7 @@ if __name__ == "__main__":
 	
 
 		for command in UPDATE_COMMANDS:
-			output = subprocess.Popen(UPDATE_COMMANDS[command], shell=True, stdout=PIPE).stdout.read()
+			output = Popen(UPDATE_COMMANDS[command], shell=True, stdout=PIPE, stderr=STDOUT).stdout.read()
 			if len(DESTINATION_ACCOUNTS):
 				for username in DESTINATION_ACCOUNTS:
 					api.update_status(status = ("@" + username + " " + command + COMMAND_NAME_SEPERATOR + output))
@@ -138,7 +139,7 @@ if __name__ == "__main__":
 	
 		if counter % 3 == 0:
 			for command in WARNING_COMMANDS:
-				output = subprocess.Popen(WARNING_COMMANDS[command][0], shell=True, stdout=PIPE).stdout.read()
+				output = Popen(WARNING_COMMANDS[command][0], shell=True, stderr=STDOUT, stdout=PIPE).stdout.read()
 				if output != WARNING_COMMANDS[command][1]:
 					if len(WARNING_DESTINATION_ACCOUNTS):
 						for username in WARNING_DESTINATION_ACCOUNTS:
