@@ -132,7 +132,11 @@ if __name__ == "__main__":
 			output = Popen(UPDATE_COMMANDS[command], shell=True, stdout=PIPE, stderr=STDOUT).stdout.read().decode("utf-8")
 			if len(DESTINATION_ACCOUNTS):
 				for username in DESTINATION_ACCOUNTS:
-					api.update_status(status = (username + " " + command + COMMAND_NAME_SEPERATOR + output))
+					text = (username + " " + command + COMMAND_NAME_SEPERATOR + output)
+					while len(text) != 0
+						api.update_status(status = text[:140])
+						text = text[140:]
+
 			else:
 				api.update_status(status = (command + COMMAND_NAME_SEPERATOR + output))
 
