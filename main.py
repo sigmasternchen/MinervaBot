@@ -21,7 +21,7 @@ def connect():
 	if USE_PIN_AUTH:
 		if not ('ACCESS_TOKEN_KEY' in vars() or 'a' in globals()):
 			print("auth url: " + auth.get_authorization_url())
-			pin = raw_input("pin: ").strip()
+			pin = input("pin: ").strip()
 			token = auth.get_access_token(
 				verfier = pin
 			)
