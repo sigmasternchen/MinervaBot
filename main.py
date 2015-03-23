@@ -63,24 +63,25 @@ if __name__ == "__main__":
 
 	counter = 0
 
-	lastChange = 0
+	lastChangeT  = 0
+	lastChangeDM = 0
 
-	lastChange = api.direct_messages(since_id = lastChange)
-	if len(lastChange) == 0:
-		lastChange = 0
+	lastChangeDM = api.direct_messages()
+	if len(lastChangeDM) == 0:
+		lastChangeDM = 0
 	else: 
-		lastChange = lastChange[0].GetId()
-	tmp = api.mentions_timeline(since_id = lastChange)
+		lastChangeDM = lastChangeDM[0].GetId()
+	lastChangeT = api.mentions_timeline()
 	if len(tmp) != 0:
-		lastChange = lastChange[0].GetId()
+		lastChangeT = lastChangeT[0].GetId()
 
 	while true:
 		if ALLOW_COMMANDS:
-			dms = api.direct_messages(since_id = lastChange)
+			dms = api.direct_messages(since_id = lastChangeDM)
 			
 			commandsToExecute = []
 			for dm in dms:
-				lastChange = dm.id
+				lastChangeDM = dm.id
 				if len(COMMAND_SOURCE_ACCOUNTS) == 0:
 					commandsToExecute.append([
 						dm.GetSenderScreenName(), 
@@ -97,9 +98,9 @@ if __name__ == "__main__":
 							log("unprivileged user @" + dm.author.screen_name + " tried to execute command (dm) \"" + dm.text.replace("\n", "\\n") + "\"\n")
 
 			if not ALLOW_ONLY_DM_COMMANDS:
-				mentions = api.mentions_timeline(since_id = lastChange)
+				mentions = api.mentions_timeline(since_id = lastChangeT)
 				for mention in mentions:
-					lastChange = mention.id
+					lastChangeT = mention.id
 					if len(COMMAND_SOURCE_ACCOUNTS) == 0:
 						commandsToExecute.append([
 							mention.author.screen_name,
