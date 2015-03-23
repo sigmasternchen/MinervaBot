@@ -75,7 +75,7 @@ if __name__ == "__main__":
 	if len(lastChangeT) != 0:
 		lastChangeT = lastChangeT[0].GetId()
 
-	while true:
+	while True:
 		if ALLOW_COMMANDS:
 			dms = api.direct_messages(since_id = lastChangeDM)
 			
@@ -95,7 +95,7 @@ if __name__ == "__main__":
 								dm.text
 							])
 						else:
-							log("unprivileged user @" + dm.author.screen_name + " tried to execute command (dm) \"" + dm.text.replace("\n", "\\n") + "\"\n")
+							log("unprivileged user @" + dm.author.screen_name + " tried to execute command (dm) \"" + dm.text.replace("\n", "\\n") + "\"")
 
 			if not ALLOW_ONLY_DM_COMMANDS:
 				mentions = api.mentions_timeline(since_id = lastChangeT)
@@ -114,7 +114,7 @@ if __name__ == "__main__":
 									mention.text
 								])
 							else:
-								log("unprivileged user @" + mention.author.screen_name + " tried to execute command \"" + mention.text.replace("\n", "\\n") + "\"\n")
+								log("unprivileged user @" + mention.author.screen_name + " tried to execute command \"" + mention.text.replace("\n", "\\n") + "\"")
 
 		
 			for command in commandsToExecute:
