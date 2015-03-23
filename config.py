@@ -11,7 +11,7 @@ NP_ACCESS_TOKEN_SECRET = 'Your Access Token Secret'
 DESTINATION_ACCOUNTS = []
 WARNING_DESTINATION_ACCOUNTS = []
 
-ALLOW_COMMANDS = false
+ALLOW_COMMANDS = False
 ALLOW_ONLY_DM_COMMANDS = False
 
 # empty array for everyone
