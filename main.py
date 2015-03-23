@@ -16,6 +16,8 @@ def log(text):
 	print(datetime.datetime.now().isoformat() + ": " + text + "\n")
 
 def connect():
+	global ACCESS_TOKEN_KEY
+	global ACCESS_TOKEN_SECRET
 	auth = tweepy.OAuthHandler(
 		consumer_key = CONSUMER_KEY,
 		consumer_secret = CONSUMER_SECRET
