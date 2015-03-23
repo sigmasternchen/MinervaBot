@@ -150,7 +150,7 @@ if __name__ == "__main__":
 		if counter % 3 == 0:
 			for command in WARNING_COMMANDS:
 				output = Popen(WARNING_COMMANDS[command][0], shell=True, stderr=STDOUT, stdout=PIPE).stdout.read().decode("utf-8")
-				if output != WARNING_COMMANDS[command][1]:
+				if output.strip() != WARNING_COMMANDS[command][1].strip():
 					if len(WARNING_DESTINATION_ACCOUNTS):
 						for username in WARNING_DESTINATION_ACCOUNTS:
 							api.update_status(status = (username + " WARNING: " + command + COMMAND_NAME_SEPERATOR + WARNING_COMMANDS[command][2]))
