@@ -142,7 +142,7 @@ if __name__ == "__main__":
 						try:
 							api.update_status(status = text[:130])
 							break
-						execpt:
+						except:
 							log("there is an error: " + sys.exc_info()[0])
 						text = text[130:]
 						time.sleep(4)
