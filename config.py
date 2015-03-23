@@ -1,7 +1,7 @@
 CONSUMER_KEY = 'Your Twitter API Consumer Key'
 CONSUMER_SECRET = 'Your Consumer Secret Key'
 
-USE_PIN_AUTH = false
+USE_PIN_AUTH = False
 
 NP_ACCESS_TOKEN_KEY = 'Your Twitter API Access Token Key'
 NP_ACCESS_TOKEN_SECRET = 'Your Access Token Secret'
@@ -12,7 +12,7 @@ DESTINATION_ACCOUNTS = []
 WARNING_DESTINATION_ACCOUNTS = []
 
 ALLOW_COMMANDS = false
-ALLOW_ONLY_DM_COMMANDS = false
+ALLOW_ONLY_DM_COMMANDS = False
 
 # empty array for everyone
 # else add comma-separated, quote-enclosed twitter names with @
