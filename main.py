@@ -120,32 +120,32 @@ if __name__ == "__main__":
 		
 			for command in commandsToExecute:
 				log("executing command (@" + command[0] + ") \"" + command[1].replace("\n", "\\n") + "\"")
-				output = Popen(command[1], shell=True, stdout=PIPE, stderr=STDOUT).stdout.read()
+				output = Popen(command[1], shell=True, stdout=PIPE, stderr=STDOUT).stdout.read().decode("utf-8")
 				log("result: " + output);
 				if (output + command[0]).len() + 2 > 140:
-					api.update_status(status = command[0] + "Output of command is too long. I'm sry. : /")
+					api.update_status(status = (command[0] + "Output of command is too long. I'm sry. : /"))
 				else:
-					api.update_status(status = command[0] + " " + output)
+					api.update_status(status = (command[0] + " " + output))
 	
 
 		for command in UPDATE_COMMANDS:
-			output = Popen(UPDATE_COMMANDS[command], shell=True, stdout=PIPE, stderr=STDOUT).stdout.read()
+			output = Popen(UPDATE_COMMANDS[command], shell=True, stdout=PIPE, stderr=STDOUT).stdout.read().decode("utf-8")
 			if len(DESTINATION_ACCOUNTS):
 				for username in DESTINATION_ACCOUNTS:
-					api.update_status(status = ("@" + username + " " + command + COMMAND_NAME_SEPERATOR + output))
+					api.update_status(status = (username + " " + command + COMMAND_NAME_SEPERATOR + output))
 			else:
 				api.update_status(status = (command + COMMAND_NAME_SEPERATOR + output))
 
 	
 		if counter % 3 == 0:
 			for command in WARNING_COMMANDS:
-				output = Popen(WARNING_COMMANDS[command][0], shell=True, stderr=STDOUT, stdout=PIPE).stdout.read()
+				output = Popen(WARNING_COMMANDS[command][0], shell=True, stderr=STDOUT, stdout=PIPE).stdout.read().decode("utf-8")
 				if output != WARNING_COMMANDS[command][1]:
 					if len(WARNING_DESTINATION_ACCOUNTS):
 						for username in WARNING_DESTINATION_ACCOUNTS:
-							api.update_status(status = username + " WARNING: " + command + COMMAND_NAME_SEPERATOR + WARNING_COMMANDS[command][2])
+							api.update_status(status = (username + " WARNING: " + command + COMMAND_NAME_SEPERATOR + WARNING_COMMANDS[command][2]))
 					else:
-						api.update_status(status = "WARNING: " + command + COMMAND_NAME_SEPERATOR + WARNING_COMMANDS[command][2])
+						api.update_status(status = ("WARNING: " + command + COMMAND_NAME_SEPERATOR + WARNING_COMMANDS[command][2]))
 		time.sleep(5 * 60)
 
 		counter += 1
