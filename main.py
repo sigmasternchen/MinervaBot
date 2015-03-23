@@ -4,11 +4,6 @@ import subprocess
 import datetime
 import time
 
-import urllib
-import urllib2
-import string
-import random
-
 from config import *
 from genconfig import *
 
