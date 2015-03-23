@@ -72,7 +72,7 @@ if __name__ == "__main__":
 	else: 
 		lastChangeDM = lastChangeDM[0].GetId()
 	lastChangeT = api.mentions_timeline()
-	if len(tmp) != 0:
+	if len(lastChangeT) != 0:
 		lastChangeT = lastChangeT[0].GetId()
 
 	while true:
