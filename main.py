@@ -4,7 +4,7 @@ import subprocess
 import datetime
 import time
 
-ACCES_TOKEN_KEY = "holder"
+ACCESS_TOKEN_KEY = "holder"
 
 from config import *
 from genconfig import *
