@@ -145,7 +145,7 @@ if __name__ == "__main__":
 						except tweepy.error.TweepError as e:
 							log("there is a twitter error: " + e.reason)
 						text = text[130:]
-						time.sleep(4)
+						time.sleep(3)
 
 			else:
 				text = (command + COMMAND_NAME_SEPERATOR + output)
@@ -156,7 +156,7 @@ if __name__ == "__main__":
 					except tweepy.error.TweepError as e:
 							log("there is a twitter error: " + e.reason)
 					text = text[130:]
-					time.sleep(1)
+					time.sleep(3)
 
 	
 		if counter % 3 == 0:
