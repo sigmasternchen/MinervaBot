@@ -16,7 +16,7 @@ logfile = open(LOG_FILE, LOG_TYPE)
 
 def log(text):
 	logfile.write(datetime.datetime.now().isoformat() + ": " + text + "\n")
-	print (datetime.datetime.now().isoformat() + ": " + text + "\n")
+	print(datetime.datetime.now().isoformat() + ": " + text + "\n")
 
 def connect():
 	auth = tweepy.OAuthHandler(
@@ -25,7 +25,7 @@ def connect():
 	)
 	if USE_PIN_AUTH:
 		if not ('ACCESS_TOKEN_KEY' in vars() or 'a' in globals()):
-			print ("auth url: " + auth.get_authorization_url())
+			print("auth url: " + auth.get_authorization_url())
 			pin = raw_input("pin: ").strip()
 			token = auth.get_access_token(
 				verfier = pin
@@ -46,7 +46,7 @@ def connect():
 	api = tweepy.API(auth)
 	
 	if not api.verify_credentials():
-		print "error! auth failed."
+		print("error! auth failed.")
 		sys.exit(1)
 	else:
 		return api
