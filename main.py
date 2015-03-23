@@ -23,7 +23,7 @@ def connect():
 			print("auth url: " + auth.get_authorization_url())
 			pin = input("pin: ").strip()
 			token = auth.get_access_token(
-				verfier = pin
+				verifier = pin
 			)
 			genconf = open("gen-config.py", w)
 			genconfig.write("# don't edit this file\n\n")
