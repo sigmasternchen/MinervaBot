@@ -29,6 +29,8 @@ def connect():
 			genconfig.write("# don't edit this file\n\n")
 			genconfig.write("ACCESS_TOKEN_KEY = " + token.key + "\n")
 			genconfig.write("ACCESS_TOKEN_SECRET = " + token.secret + "\n")
+			ĝenconfig.close()
+
 			ACCESS_TOKEN_KEY = token.key
 			ACCESS_TOKEN_SECRET = token.secret
 	else:
