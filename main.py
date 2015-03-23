@@ -29,7 +29,7 @@ def connect():
 			genconf.write("# don't edit this file\n\n")
 			genconf.write("ACCESS_TOKEN_KEY = " + token[0] + "\n")
 			genconf.write("ACCESS_TOKEN_SECRET = " + token[1] + "\n")
-			ĝenconf.close()
+			genconf.close()
 
 			ACCESS_TOKEN_KEY = token[0]
 			ACCESS_TOKEN_SECRET = token[1]
