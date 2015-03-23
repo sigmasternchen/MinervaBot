@@ -75,6 +75,8 @@ if __name__ == "__main__":
 	lastChangeT = api.mentions_timeline()
 	if len(lastChangeT) != 0:
 		lastChangeT = lastChangeT[0].GetId()
+	else:
+		lastChangeT = 0
 
 	while True:
 		if ALLOW_COMMANDS:
