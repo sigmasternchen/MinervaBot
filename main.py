@@ -25,7 +25,7 @@ def connect():
 			token = auth.get_access_token(
 				verifier = pin
 			)
-			genconf = open("gen-config.py", "w")
+			genconf = open("genconfig.py", "w")
 			genconf.write("# don't edit this file\n\n")
 			genconf.write("ACCESS_TOKEN_KEY = " + token[0] + "\n")
 			genconf.write("ACCESS_TOKEN_SECRET = " + token[1] + "\n")
@@ -61,8 +61,14 @@ if __name__ == "__main__":
 
 	lastChange = 0
 
-	lastChange = api.direct_messages(since_id = lastChange)[0].GetId()
-	lastChange = api.mentions_timeline(since_id = lastChange)[0].GetId()
+	lastChange = api.direct_messages(since_id = lastChange)
+	if lastChange.length == 0
+		lastChange = 0
+	else 
+		lastChange = lastChange[0].GetId()
+	lastChange = api.mentions_timeline(since_id = lastChange)
+	if lastChange.length != 0
+		lastChange = lastChange[0].GetId()
 
 	while true:
 		if ALLOW_COMMANDS:
