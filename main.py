@@ -141,6 +141,7 @@ if __name__ == "__main__":
 					while len(text) != 0:
 						api.update_status(status = text[:130])
 						text = text[130:]
+						time.sleep(1)
 
 			else:
 				api.update_status(status = (command + COMMAND_NAME_SEPERATOR + output))
