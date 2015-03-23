@@ -25,7 +25,7 @@ def connect():
 			token = auth.get_access_token(
 				verifier = pin
 			)
-			genconf = open("gen-config.py", w)
+			genconf = open("gen-config.py", "w")
 			genconfig.write("# don't edit this file\n\n")
 			genconfig.write("ACCESS_TOKEN_KEY = " + token.key + "\n")
 			genconfig.write("ACCESS_TOKEN_SECRET = " + token.secret + "\n")
