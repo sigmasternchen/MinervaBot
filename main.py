@@ -15,7 +15,7 @@ from genconfig import *
 logfile = open(LOG_FILE, LOG_TYPE)
 
 def log(text):
-	logfile.write(datetime.datetime.now().isoformat() + ": " + text + "\n"))
+	logfile.write(datetime.datetime.now().isoformat() + ": " + text + "\n")
 	print datetime.datetime.now().isoformat() + ": " + text + "\n"
 
 def connect():
