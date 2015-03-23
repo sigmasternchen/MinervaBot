@@ -1,7 +1,10 @@
 CONSUMER_KEY = 'Your Twitter API Consumer Key'
 CONSUMER_SECRET = 'Your Consumer Secret Key'
-ACCESS_TOKEN_KEY = 'Your Twitter API Access Token Key'
-ACCESS_TOKEN_SECRET = 'Your Access Token Secret'
+
+USE_PIN_AUTH = false
+
+NP_ACCESS_TOKEN_KEY = 'Your Twitter API Access Token Key'
+NP_ACCESS_TOKEN_SECRET = 'Your Access Token Secret'
 
 # empty array for no mention
 # else add comma-separated, quote-enclosed twitter names with @
