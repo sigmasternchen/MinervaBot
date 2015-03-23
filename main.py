@@ -70,7 +70,7 @@ if __name__ == "__main__":
 		lastChange = 0
 	else: 
 		lastChange = lastChange[0].GetId()
-	lastChange = api.mentions(since_id = lastChange)
+	lastChange = api.mentions_timeline(since_id = lastChange)
 	if len(lastChange) != 0:
 		lastChange = lastChange[0].GetId()
 
