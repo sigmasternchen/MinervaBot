@@ -4,6 +4,8 @@ import subprocess
 import datetime
 import time
 
+ACCES_TOKEN_KEY = "holder"
+
 from config import *
 from genconfig import *
 
@@ -19,7 +21,7 @@ def connect():
 		consumer_secret = CONSUMER_SECRET
 	)
 	if USE_PIN_AUTH:
-		if not ('ACCESS_TOKEN_KEY' in vars() or 'a' in globals()):
+		if ACCESS_TOKEN_KEY == "holder":
 			print("auth url: " + auth.get_authorization_url())
 			pin = input("pin: ").strip()
 			token = auth.get_access_token(
