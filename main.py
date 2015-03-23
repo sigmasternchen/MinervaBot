@@ -92,7 +92,7 @@ if __name__ == "__main__":
 					])
 				else:
 					for user in COMMAND_SOURCE_ACCOUNTS:
-						if dm.author.screen_name == user:
+						if ("@" + dm.author.screen_name) == user:
 							commandsToExecute.append([
 								dm.author.screen_name, 
 								dm.text
@@ -114,7 +114,7 @@ if __name__ == "__main__":
 						])
 					else:
 						for user in COMMAND_SOURCE_ACCOUNTS:
-							if mention.author.screen_name == user:
+							if ("@" + mention.author.screen_name) == user:
 								commandsToExecute.append([
 									mention.author.screen_name,
 									mention.text
