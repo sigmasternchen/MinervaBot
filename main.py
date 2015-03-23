@@ -70,7 +70,7 @@ if __name__ == "__main__":
 		lastChange = 0
 	else: 
 		lastChange = lastChange[0].GetId()
-	lastChange = api.mentions_timeline(since_id = lastChange)
+	lastChange = api.mentions(since_id = lastChange)
 	if len(lastChange) != 0:
 		lastChange = lastChange[0].GetId()
 
@@ -97,7 +97,7 @@ if __name__ == "__main__":
 							log("unprivileged user @" + dm.author.screen_name + " tried to execute command (dm) \"" + dm.text.replace("\n", "\\n") + "\"\n")
 
 			if not ALLOW_ONLY_DM_COMMANDS:
-				mentions = api.mention_timeline(since_id = lastChange)
+				mentions = api.mentions(since_id = lastChange)
 				for mention in mentions:
 					lastChange = mention.id
 					if len(COMMAND_SOURCE_ACCOUNTS) == 0:
