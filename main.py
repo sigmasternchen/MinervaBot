@@ -99,7 +99,10 @@ if __name__ == "__main__":
 							log("unprivileged user @" + dm.author.screen_name + " tried to execute command (dm) \"" + dm.text.replace("\n", "\\n") + "\"")
 
 			if not ALLOW_ONLY_DM_COMMANDS:
-				mentions = api.mentions_timeline(since_id = lastChangeT)
+				if lastChangeT > 0:
+					mentions = api.mentions_timeline(since_id = lastChangeT)
+				else:
+					mentions = api.mentions_timeline()
 				for mention in mentions:
 					lastChangeT = mention.id
 					if len(COMMAND_SOURCE_ACCOUNTS) == 0:
