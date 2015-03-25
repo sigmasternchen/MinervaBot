@@ -87,8 +87,8 @@ if __name__ == "__main__":
 				lastChangeDM = dm.id
 				if len(COMMAND_SOURCE_ACCOUNTS) == 0:
 					commandsToExecute.append([
-						dm.GetSenderScreenName(), 
-						dm.GetText()
+						dm.author.screen_name, 
+						dm.text
 					])
 				else:
 					for user in COMMAND_SOURCE_ACCOUNTS:
@@ -101,6 +101,7 @@ if __name__ == "__main__":
 							log("unprivileged user @" + dm.author.screen_name + " tried to execute command (dm) \"" + dm.text.replace("\n", "\\n") + "\"")
 
 			if not ALLOW_ONLY_DM_COMMANDS:
+				time.sleep(3)
 				if lastChangeT > 0:
 					mentions = api.mentions_timeline(since_id = lastChangeT)
 				else:
@@ -127,10 +128,11 @@ if __name__ == "__main__":
 				log("executing command (@" + command[0] + ") \"" + command[1].replace("\n", "\\n") + "\"")
 				output = Popen(command[1], shell=True, stdout=PIPE, stderr=STDOUT).stdout.read().decode("utf-8")
 				log("result: " + output);
-				if len(output + command[0]) + 2 > 140:
-					api.update_status(status = (command[0] + "Output of command is too long. I'm sry. : /"))
+				if len(output + command[0]) + 4 > 140:
+					api.update_status(status = ("@" + command[0] + "Output of command is too long. I'm sry. : /"))
 				else:
-					api.update_status(status = (command[0] + " " + output))
+					api.update_status(status = ("@" + command[0] + " " + output))
+				time.sleep(3)
 	
 
 		for command in UPDATE_COMMANDS:
@@ -154,7 +156,7 @@ if __name__ == "__main__":
 						api.update_status(status = text[:130])
 						break
 					except tweepy.error.TweepError as e:
-							log("there is a twitter error: " + e.reason)
+						log("there is a twitter error: " + e.reason)
 					text = text[130:]
 					time.sleep(3)
 
@@ -166,8 +168,10 @@ if __name__ == "__main__":
 					if len(WARNING_DESTINATION_ACCOUNTS):
 						for username in WARNING_DESTINATION_ACCOUNTS:
 							api.update_status(status = (username + " WARNING: " + command + COMMAND_NAME_SEPERATOR + WARNING_COMMANDS[command][2]))
+							time.sleep(3)
 					else:
 						api.update_status(status = ("WARNING: " + command + COMMAND_NAME_SEPERATOR + WARNING_COMMANDS[command][2]))
 		time.sleep(5 * 60)
+						time.sleep(3)
 
 		counter += 1
