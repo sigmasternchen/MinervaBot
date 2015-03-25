@@ -171,7 +171,8 @@ if __name__ == "__main__":
 							time.sleep(3)
 					else:
 						api.update_status(status = ("WARNING: " + command + COMMAND_NAME_SEPERATOR + WARNING_COMMANDS[command][2]))
-		time.sleep(5 * 60)
 						time.sleep(3)
+		time.sleep(5 * 60)
+						
 
 		counter += 1
